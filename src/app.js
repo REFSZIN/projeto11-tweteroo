@@ -130,7 +130,7 @@ let datatweets = {
   ]
 };
 
-let datauser = {
+const datauser = {
   "users": [
     {
       username: "refwire",
@@ -172,7 +172,7 @@ app.post("/sign-up", (req, res) => {
 });
 
 app.post("/tweets", (req, res) => {
-  const { tweet,username } = req.body;
+  const { tweet } = req.body;
   const { user } = req.headers;
 
   if(!user||!tweet){
@@ -220,7 +220,7 @@ app.get("/tweets/:USERNAME",(req,res)=>{
   const list = datatweets.tweets;
   const userName = req.params.USERNAME;
 
-  let tweets = list.filter((e) => e.username === userName);
+  const tweets = list.filter((e) => e.username === userName);
   tweets = list.slice(-10);
 
   res.status(201).send(
