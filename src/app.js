@@ -156,7 +156,7 @@ app.post("/sign-up", (req, res) => {
   };
   
   const newUser = {
-    ...req.boby,
+    ...req.body,
     id: datauser.users.length + 1,
   };
 
@@ -220,9 +220,7 @@ app.get("/tweets/:USERNAME",(req,res)=>{
   const list = datatweets.tweets;
   const userName = req.params.USERNAME;
 
-  const tweets = list.filter((e) => e.username === userName);
-  tweets = list.slice(-10);
-
+  const tweets = list.filter(e => e.username === userName).slice(-10);
   res.status(201).send(
     tweets
   );
